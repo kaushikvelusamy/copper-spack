@@ -29,13 +29,13 @@ class Copper(CMakePackage):
 
         # hardcoded flags
         args.extend([
-            self.define('CMAKE_VERBOSE_MAKEFILE', True)
-            self.define('CMAKE_EXPORT_COMPILE_COMMANDS', True)
+            self.define('CMAKE_VERBOSE_MAKEFILE', True),
+            self.define('CMAKE_EXPORT_COMPILE_COMMANDS', True),
         ])
 
         # from variants
         args.extend([
-            self.define_from_variant("BLOCK_REDUNDANT_RPCS", "block_redundant_rpcs")
+            self.define_from_variant("BLOCK_REDUNDANT_RPCS", "block_redundant_rpcs"),
         ])
 
         # fuse
