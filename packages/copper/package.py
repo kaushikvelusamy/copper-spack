@@ -8,6 +8,7 @@ class Copper(CMakePackage):
     # Replace this with the actual URL to download your source code
     homepage = "https://github.com/argonne-lcf/copper"
     url      = "https://github.com/argonne-lcf/copper.git"
+    git      = "https://github.com/argonne-lcf/copper.git"
     
     maintainers("kaushikvelusamy", "kevin-harms")
 
