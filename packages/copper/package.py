@@ -8,6 +8,7 @@ class Copper(CMakePackage):
     # Replace this with the actual URL to download your source code
     homepage = "https://github.com/argonne-lcf/copper"
     url      = "https://github.com/argonne-lcf/copper.git"
+    git      = "https://github.com/argonne-lcf/copper.git"
     
     maintainers("kaushikvelusamy", "kevin-harms")
 
@@ -29,13 +30,13 @@ class Copper(CMakePackage):
 
         # hardcoded flags
         args.extend([
-            self.define('CMAKE_VERBOSE_MAKEFILE', True)
-            self.define('CMAKE_EXPORT_COMPILE_COMMANDS', True)
+            self.define('CMAKE_VERBOSE_MAKEFILE', True),
+            self.define('CMAKE_EXPORT_COMPILE_COMMANDS', True),
         ])
 
         # from variants
         args.extend([
-            self.define_from_variant("BLOCK_REDUNDANT_RPCS", "block_redundant_rpcs")
+            self.define_from_variant("BLOCK_REDUNDANT_RPCS", "block_redundant_rpcs"),
         ])
 
         # fuse
