@@ -1,3 +1,5 @@
+import os
+
 from spack.package import *
 
 class Copper(CMakePackage):
@@ -20,15 +22,28 @@ class Copper(CMakePackage):
     depends_on('mochi-margo')
     depends_on('mochi-thallium')
 
-    variant("block_redundant_rpcs", default=ON, description="On off block_redundant_rpcs ")
+    variant("block_redundant_rpcs", default=True, description="On off block_redundant_rpcs ")
 
     def cmake_args(self):
-        from_variant = self.define_from_variant
         args = []
-        args.append('-DCMAKE_BUILD_TYPE = Release')
-        args.append(from_variant("BLOCK_REDUNDANT_RPCS", "block_redundant_rpcs"))
-        args.append('-DCMAKE_VERBOSE_MAKEFILE = ON')
-        args.append('-DCMAKE_EXPORT_COMPILE_COMMANDS = ON')
-        args.append('-DFUSE3_LIB = self.spec['fuse'].prefix.lib')
-        args.append('-DFUSE3_INCLUDE = self.spec['fuse'].prefix.include')
+
+        # hardcoded flags
+        args.extend([
+            self.define('CMAKE_VERBOSE_MAKEFILE', True)
+            self.define('CMAKE_EXPORT_COMPILE_COMMANDS', True)
+        ])
+
+        # from variants
+        args.extend([
+            self.define_from_variant("BLOCK_REDUNDANT_RPCS", "block_redundant_rpcs")
+        ])
+
+        # fuse
+        fuse_prefix = self.spec['fuse'].prefix
+        if os.path.isdir(fuse_prefix.lib64):
+            args.append(self.define('FUSE3_LIB', fuse_prefix.lib64))
+        else:
+            args.append(self.define('FUSE3_LIB', fuse_prefix.lib))
+        args.append(self.define('FUSE3_INCLUDE', fuse_prefix.include))
+
         return args
