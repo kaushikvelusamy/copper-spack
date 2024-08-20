@@ -39,12 +39,4 @@ class Copper(CMakePackage):
             self.define_from_variant("BLOCK_REDUNDANT_RPCS", "block_redundant_rpcs"),
         ])
 
-        # fuse
-        fuse_prefix = self.spec['fuse'].prefix
-        if os.path.isdir(fuse_prefix.lib64):
-            args.append(self.define('FUSE3_LIB', fuse_prefix.lib64))
-        else:
-            args.append(self.define('FUSE3_LIB', fuse_prefix.lib))
-        args.append(self.define('FUSE3_INCLUDE', fuse_prefix.include))
-
         return args
