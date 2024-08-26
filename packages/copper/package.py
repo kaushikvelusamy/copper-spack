@@ -20,9 +20,9 @@ class Copper(CMakePackage):
     depends_on('fuse@3')
     depends_on('mercury@2.3.1')
     depends_on('cereal@1.3.2')
-    depends_on('mochi-margo@0.17.0')
+    depends_on('mochi-margo@0.15.0')
     depends_on('mochi-thallium@0.11.3')
-
+    depends_on('mpi')
     variant("block_redundant_rpcs", default=True, description="On off block_redundant_rpcs ")
 
     def cmake_args(self):
