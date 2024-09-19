@@ -18,7 +18,7 @@ class Copper(CMakePackage):
     # Add the dependencies your software requires
     depends_on('pkgconfig')
     depends_on('fuse@3')
-    depends_on('mercury@2.3:')
+    depends_on('mercury@2.4.0rc5:')
     depends_on('cereal@1.3:')
     depends_on('mochi-margo@0.15:')
     depends_on('mochi-thallium@0.11:')
