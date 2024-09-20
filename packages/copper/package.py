@@ -18,10 +18,10 @@ class Copper(CMakePackage):
     # Add the dependencies your software requires
     depends_on('pkgconfig')
     depends_on('fuse@3')
-    depends_on('mercury@2.4.0rc5:')
+    depends_on('mercury@2.4:')
     depends_on('cereal@1.3:')
-    depends_on('mochi-margo@0.15:')
-    depends_on('mochi-thallium@0.11:')
+    depends_on('mochi-margo@0.18:')
+    depends_on('mochi-thallium@0.14:')
     depends_on('mpi')
     variant("block_redundant_rpcs", default=True, description="On off block_redundant_rpcs ")
 
